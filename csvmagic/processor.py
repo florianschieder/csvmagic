@@ -1,9 +1,10 @@
 from enum import Enum, unique
 
 
+# TODO move this into the C world and import here somehow
 @unique
 class CSVProcessorMode(Enum):
-    DICT = "dict"
+    DICT = 0x0
 
 
 class CSVProcessorStub:

@@ -1,0 +1,2 @@
+class IncompleteBuilderConfigurationException(Exception):
+    pass
