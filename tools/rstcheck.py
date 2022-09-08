@@ -10,10 +10,15 @@ def main():
         *glob("*.rst", recursive=True),
     ]
 
-    execv(sys.executable,
-          [sys.executable,
-           "-m", "rstcheck._cli",
-           *matches])
+    execv(
+        sys.executable,
+        [
+            sys.executable,
+            "-m",
+            "rstcheck._cli",
+            *matches,
+        ],
+    )
 
 
 if __name__ == "__main__":

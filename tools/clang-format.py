@@ -13,10 +13,10 @@ def main():
         *glob("csvmagic/**/*.h", recursive=True),
     ]
 
-    output = run(["clang-format",
-                  "--Werror", "--style=google", "--dry-run",
-                  *matches],
-                 stderr=PIPE).stderr
+    output = run(
+        ["clang-format", "--Werror", "--style=google", "--dry-run", *matches],
+        stderr=PIPE,
+    ).stderr
     lines = output.decode().splitlines()
 
     if len(lines) % 3 != 0:
@@ -44,8 +44,7 @@ def main():
                 lines[(i * 3) + 1] = None
                 lines[(i * 3) + 2] = None
 
-        filtered_lines = list(filter(lambda it: it is not None,
-                                     lines))
+        filtered_lines = list(filter(lambda it: it is not None, lines))
         if filtered_lines:
             for line in filtered_lines:
                 print(line)

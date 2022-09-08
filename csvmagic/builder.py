@@ -14,8 +14,8 @@ class Builder:
     # RFC 4180
     _defaults = {
         "escaping_delimiter": '"',
-        "field_delimiter": ',',
-        "line_terminator": '\r\n',
+        "field_delimiter": ",",
+        "line_terminator": "\r\n",
     }
 
     def use_mode(self, mode):
@@ -47,8 +47,10 @@ class Builder:
         return CSVProcessor(**self._fields)
 
     def _check_if_fields_are_complete(self):
-        incomplete_fields = filter(lambda value: value is None,
-                                   self._fields.values())
+        incomplete_fields = filter(
+            lambda value: value is None,
+            self._fields.values(),
+        )
         if tuple(incomplete_fields):
             raise IncompleteBuilderConfigurationException(
                 ", ".join(incomplete_fields)

@@ -11,15 +11,22 @@ def main():
         *glob("csvmagic/**/*.hpp", recursive=True),
     ]
 
-    execv(sys.executable,
-          [sys.executable,
-           "-m", "cpplint",
-           "--filter=" + ",".join(
-               [
-                   "-legal/copyright",
-                   "-build/include_subdir",
-               ]),
-           *matches])
+    execv(
+        sys.executable,
+        [
+            sys.executable,
+            "-m",
+            "cpplint",
+            "--filter="
+            + ",".join(
+                [
+                    "-legal/copyright",
+                    "-build/include_subdir",
+                ]
+            ),
+            *matches,
+        ],
+    )
 
 
 if __name__ == "__main__":
