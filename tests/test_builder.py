@@ -31,7 +31,7 @@ class BuilderTests(TestCase):
 
         with self.assertRaises(IncompleteBuilderConfigurationException) as cm:
             builder.get_instance()
-        self.assertEqual("", str(cm.exception))
+        self.assertEqual("mode", str(cm.exception))
 
     def test_passes_values_properly(self):
         builder = (Builder()
