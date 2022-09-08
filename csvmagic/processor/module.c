@@ -12,7 +12,7 @@ static PyModuleDef CSVProcessorModule = {
 // TODO After everything is finalized, overthink if helper functions
 // or macros are appropriate.
 PyMODINIT_FUNC PyInit_processor() {
-  if (PyType_Ready(&CSVProcessorType) < 0) {
+  if (PyType_Ready(&CSVProcessor) < 0) {
     return NULL;
   }
 
@@ -21,10 +21,10 @@ PyMODINIT_FUNC PyInit_processor() {
     return NULL;
   }
 
-  Py_INCREF(&CSVProcessorType);
-  if (PyModule_AddObject(module, "CSVProcessor",
-                         (PyObject *)&CSVProcessorType) < 0) {
-    Py_DECREF(&CSVProcessorType);
+  Py_INCREF(&CSVProcessor);
+  PyObject *CSVProcessor_Type = (PyObject *)&CSVProcessor;
+  if (PyModule_AddObject(module, "CSVProcessor", CSVProcessor_Type) < 0) {
+    Py_DECREF(&CSVProcessor);
     Py_DECREF(module);
     return NULL;
   }

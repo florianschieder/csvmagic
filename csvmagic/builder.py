@@ -46,7 +46,7 @@ class Builder:
 
     def get_instance(self) -> CSVProcessor:
         self._check_if_fields_are_complete()
-        return CSVProcessor(**self._fields)
+        return CSVProcessor(*self._fields.values())
 
     def _check_if_fields_are_complete(self) -> None:
         incomplete_fields = [

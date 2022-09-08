@@ -7,8 +7,13 @@ extensions = {
     "csvmagic.processor": {
         "sources": [
             "csvmagic/processor/module.c",
+
             "csvmagic/processor/CSVProcessor/definition.c",
+            "csvmagic/processor/CSVProcessor/__init__.c",
+            "csvmagic/processor/CSVProcessor/parse_from_string.c",
+
             "csvmagic/processor/CSVProcessorMode/definer.cpp",
+
             "csvmagic/processor/generic_utils/enum.cpp",
         ],
         "extra_compile_args": {

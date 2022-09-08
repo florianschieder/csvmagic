@@ -14,14 +14,14 @@ class BuilderTests(TestCase):
         TestCase = self
 
         class MockCSVProcessor:
-            def __init__(self, **kwargs):
-                expected_args = {
-                    "mode": CSVProcessorMode.DICT,
-                    "escaping_delimiter": '"',
-                    "field_delimiter": ',',
-                    "line_terminator": '\r\n',
-                }
-                TestCase.assertEqual(expected_args, kwargs)
+            def __init__(self, *args):
+                expected_args = (
+                    '"',
+                    ',',
+                    '\r\n',
+                    CSVProcessorMode.DICT,
+                )
+                TestCase.assertEqual(expected_args, args)
 
         with patch("csvmagic.builder.CSVProcessor", MockCSVProcessor):
             self.assertIsInstance(builder.get_instance(), MockCSVProcessor)
@@ -43,14 +43,14 @@ class BuilderTests(TestCase):
         TestCase = self
 
         class MockCSVProcessor:
-            def __init__(self, **kwargs):
-                expected_args = {
-                    "mode": CSVProcessorMode.DICT,
-                    "escaping_delimiter": "'",
-                    "field_delimiter": ";",
-                    "line_terminator": "\n",
-                }
-                TestCase.assertEqual(expected_args, kwargs)
+            def __init__(self, *args):
+                expected_args = (
+                    "'",
+                    ";",
+                    "\n",
+                    CSVProcessorMode.DICT,
+                )
+                TestCase.assertEqual(expected_args, args)
 
         with patch("csvmagic.builder.CSVProcessor", MockCSVProcessor):
             self.assertIsInstance(builder.get_instance(), MockCSVProcessor)
