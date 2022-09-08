@@ -4,3 +4,8 @@
 *.exe
 __pycache__
 *.pyc 
+build
+*.pyd
+*.so
+/tags
+*.plist
