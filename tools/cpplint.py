@@ -12,7 +12,14 @@ def main():
     ]
 
     execv(sys.executable,
-          [sys.executable, "-m", "cpplint", *matches])
+          [sys.executable,
+           "-m", "cpplint",
+           "--filter=" + ",".join(
+               [
+                   "-legal/copyright",
+                   "-build/include_subdir",
+               ]),
+           *matches])
 
 
 if __name__ == "__main__":
